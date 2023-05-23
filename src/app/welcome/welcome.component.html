@@ -1,0 +1,18 @@
+<h2>HOLA, BIENVENIDO A LA APP ANGULAR!</h2>
+<div *ngIf="showWelcomeMessage">
+   <p *ngIf="!editingName">¡Hola {{ name }}!</p>
+   <br>
+   <p *ngIf="editingName">¡Bienvenido/a, <input [(ngModel)]="name" (keydown.enter)="updateWelcomeMessage()">!</p>
+   <br>
+   <button class="btn btn-primary mx-3 my-3" (click)="toggleEditingName()">{{ editingName ? 'Guardar' : 'Editar' }}</button>
+   <button class="btn btn-primary mx-3 my-3" (click)="updateWelcomeMessage()">Actualizar Mensaje</button>
+</div>
+
+<button class="btn btn-primary mx-3 my-3" (click)="toggleNameList()">Mostrar/Ocultar Lista</button>
+
+<div *ngIf="showNameList">
+  <h3>Los ultimos diez (10) nombres ingresados son:</h3>
+  <ul>
+    <li *ngFor="let recentName of recentNames">{{ recentName }}</li>
+  </ul>
+</div>
